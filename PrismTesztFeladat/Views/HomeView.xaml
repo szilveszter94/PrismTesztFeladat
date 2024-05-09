@@ -9,6 +9,6 @@
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" VerticalAlignment="Top" Text="Home" FontSize="32"/>
-        <Button Grid.Row="1" VerticalAlignment="Top" Content="Change view" />
+        <Button Command="{Binding ShowModulesCommand}" Grid.Row="1" VerticalAlignment="Top" Content="Change view" />
     </Grid>
 </UserControl>

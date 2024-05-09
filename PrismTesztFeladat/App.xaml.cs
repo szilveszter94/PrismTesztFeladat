@@ -4,6 +4,7 @@ using Prism.Ioc;
 using Prism.Modularity;
 using PrismTesztFeladat.Views;
 using System.Windows;
+using ModuleB;
 
 namespace PrismTesztFeladat
 {
@@ -24,6 +25,7 @@ namespace PrismTesztFeladat
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             moduleCatalog.AddModule<ModuleAModule>();
+            moduleCatalog.AddModule<ModuleBModule>();
         }
     }
 }

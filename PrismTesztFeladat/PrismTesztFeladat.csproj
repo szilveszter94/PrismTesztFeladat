@@ -9,5 +9,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModuleA\ModuleA.csproj" />
+    <ProjectReference Include="..\ModuleB\ModuleB.csproj" />
   </ItemGroup>
 </Project>

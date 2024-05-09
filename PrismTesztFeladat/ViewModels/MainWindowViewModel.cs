@@ -1,4 +1,6 @@
-﻿using Prism.Ioc;
+﻿using System;
+using Prism.Commands;
+using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Regions;
 using PrismTesztFeladat.Views;
@@ -12,8 +14,8 @@ namespace PrismTesztFeladat.ViewModels
 
         public string Title
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            get => _title;
+            set => SetProperty(ref _title, value);
         }
 
         public MainWindowViewModel(IContainerExtension container, IRegionManager regionManager)
