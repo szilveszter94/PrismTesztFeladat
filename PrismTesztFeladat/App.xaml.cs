@@ -1,10 +1,12 @@
-﻿using ModuleA;
-using Prism.DryIoc;
+﻿using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
 using PrismTesztFeladat.Views;
 using System.Windows;
-using ModuleB;
+using System.Linq;
+using PrismTesztFeladat.Loader;
+using System.IO;
+using System;
 
 namespace PrismTesztFeladat
 {
@@ -22,10 +24,14 @@ namespace PrismTesztFeladat
         {
         }
 
-        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+        protected override IModuleCatalog CreateModuleCatalog()
         {
-            moduleCatalog.AddModule<ModuleAModule>();
-            moduleCatalog.AddModule<ModuleBModule>();
+            var modulesToLoad = new string[] { "ModuleA", "ModuleB" };
+            var folderName = "Modules";
+            
+            var moduleLoader = new ModuleLoader();
+            var directories = moduleLoader.SearchModules(modulesToLoad, folderName);
+            return moduleLoader.CreateModuleCatalog(directories);
         }
     }
 }

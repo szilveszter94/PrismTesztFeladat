@@ -20,6 +20,6 @@
             <CheckBox IsChecked="{Binding CanSendMessage, Mode=TwoWay}" HorizontalAlignment="Center" Grid.Column="1" Content="Can send?"/>
         </Grid>
         <TextBox Text="{Binding Message, Mode=TwoWay}" Padding="5" FontSize="28" BorderBrush="Gray" BorderThickness="1 1 1 1" Grid.Row="2"></TextBox>
-        <Button IsEnabled="{Binding CanSendMessage}" Command="{Binding SendMessageCommand}" Grid.Row="3">Send</Button>
+        <Button Command="{Binding SendMessageCommand}" Grid.Row="3">Send</Button>
     </Grid>
 </UserControl>

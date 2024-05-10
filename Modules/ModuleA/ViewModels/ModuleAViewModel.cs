@@ -12,7 +12,11 @@ namespace ModuleA.ViewModels
         public bool CanSendMessage
         {
             get => _canSendMessage;
-            set => SetProperty(ref _canSendMessage, value);
+            set
+            {
+                SetProperty(ref _canSendMessage, value);
+                SendMessageCommand.RaiseCanExecuteChanged();
+            }
         }
         private bool _canSendMessage;
 
@@ -26,7 +30,7 @@ namespace ModuleA.ViewModels
         public ModuleAViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
-            SendMessageCommand = new DelegateCommand(SendMessage);
+            SendMessageCommand = new DelegateCommand(SendMessage, () => CanSendMessage);
         }
 
         private void SendMessage()
