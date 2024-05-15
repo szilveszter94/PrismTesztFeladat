@@ -31,8 +31,8 @@ public class ModuleBViewModel : BindableBase
 
     private void ChangeViews()
     {
-        _regionManager.RequestNavigate(Core.Regions.LEFT_REGION, "HomeView");
-        _regionManager.RequestNavigate(Core.Regions.RIGHT_REGION, "HomeView");
+        _regionManager.RequestNavigate(Regions.LEFT_REGION, "HomeView");
+        _regionManager.RequestNavigate(Regions.RIGHT_REGION, "HomeView");
     }
     
 

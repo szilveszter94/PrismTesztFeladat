@@ -1,4 +1,5 @@
-﻿using Prism.Ioc;
+﻿using Core;
+using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Regions;
 using PrismTesztFeladat.Views;
@@ -19,8 +20,8 @@ namespace PrismTesztFeladat.ViewModels
         public MainWindowViewModel(IContainerExtension container, IRegionManager regionManager)
         {
             _regionManager = regionManager;
-            _regionManager.RegisterViewWithRegion(Core.Regions.LEFT_REGION, typeof(HomeView));
-            _regionManager.RegisterViewWithRegion(Core.Regions.RIGHT_REGION, typeof(HomeView));
+            _regionManager.RegisterViewWithRegion(Regions.LEFT_REGION, typeof(HomeView));
+            _regionManager.RegisterViewWithRegion(Regions.RIGHT_REGION, typeof(HomeView));
         }
     }
 }
