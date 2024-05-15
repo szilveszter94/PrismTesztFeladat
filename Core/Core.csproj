@@ -1,8 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-	  <OutputPath>..\build\</OutputPath>
+	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+	<OutputType>Library</OutputType>
+	<OutputPath>$(SolutionDir)\build\$(Configuration)\</OutputPath>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>

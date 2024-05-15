@@ -2,13 +2,11 @@
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
-using Prism.Regions;
 
 namespace ModuleA.ViewModels
 {
     public class ModuleAViewModel : BindableBase
     {
-        private IRegionManager _regionManager;
         private readonly IEventAggregator _eventAggregator;
         public DelegateCommand SendMessageCommand { get; }
 
@@ -30,9 +28,8 @@ namespace ModuleA.ViewModels
         }
         private string _message;
         
-        public ModuleAViewModel(IRegionManager regionManager, IEventAggregator eventAggregator)
+        public ModuleAViewModel(IEventAggregator eventAggregator)
         {
-            _regionManager = regionManager;
             SendMessageCommand = new DelegateCommand(SendMessage, () => CanSendMessage);
             _eventAggregator = eventAggregator;
         }

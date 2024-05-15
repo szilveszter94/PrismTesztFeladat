@@ -1,9 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+	<PropertyGroup>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	</PropertyGroup>
     <PropertyGroup>
 		<OutputType>Library</OutputType>
         <TargetFramework>net6.0-windows</TargetFramework>
-		<OutputPath>..\..\build\</OutputPath>
+		<OutputPath>$(SolutionDir)\build\$(Configuration)\</OutputPath>
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 

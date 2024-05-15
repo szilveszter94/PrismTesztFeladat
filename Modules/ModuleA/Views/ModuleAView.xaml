@@ -1,7 +1,12 @@
 ﻿<UserControl x:Class="ModuleA.Views.ModuleAView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModels="clr-namespace:ModuleA.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewModels:ModuleAViewModel}"
+             mc:Ignorable="d"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
         <Grid.RowDefinitions>

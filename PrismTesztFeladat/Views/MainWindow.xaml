@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:Core="clr-namespace:Core"
         xmlns:prism="http://prismlibrary.com/"
-        xmlns:viewmodels="clr-namespace:PrismTesztFeladat.ViewModels"
-        d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
+        xmlns:viewModels="clr-namespace:PrismTesztFeladat.ViewModels"
+        xmlns:core="clr-namespace:Core;assembly=Core"
+        d:DataContext="{d:DesignInstance Type=viewModels:MainWindowViewModel}"
         mc:Ignorable="d"
 
         prism:ViewModelLocator.AutoWireViewModel="True"
@@ -17,7 +17,7 @@
             <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
 
-        <ContentControl Grid.Column="0" prism:RegionManager.RegionName="LeftRegion" />
-        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="RightRegion"/>
+        <ContentControl Grid.Column="0" prism:RegionManager.RegionName="{x:Static core:Regions.LeftRegion}" />
+        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static core:Regions.RightRegion}"/>
     </Grid>
 </Window>

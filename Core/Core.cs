@@ -4,19 +4,39 @@ namespace Core;
 
 public static class Regions
 {
-    public const string LEFT_REGION = "LeftRegion";
-    public const string RIGHT_REGION = "RightRegion";
+    public const string LeftRegion = "LeftRegion";
+    public const string RightRegion = "RightRegion";
 }
 
 public class MessageSentEvent : PubSubEvent<string>
 {
 }
 
-public interface INavigationManager
+public interface IModuleRegistry
 {
-
+    public Type? GetBaseModule();
+    public string GetModuleTypeByRegion(string regionName);
 }
 
-public class NavigationManager : INavigationManager
+public class ModuleRegistry : IModuleRegistry
 {
+    private readonly Dictionary<string, string> _moduleTypes =
+        new() { { Regions.LeftRegion, "ModuleAView" }, { Regions.RightRegion, "ModuleBView" } };
+
+    private Type? _baseType;
+
+    public ModuleRegistry(Type moduleType)
+    {
+        _baseType = moduleType;
+    }
+
+    public string GetModuleTypeByRegion(string regionName)
+    {
+        return _moduleTypes[regionName];
+    }
+
+    public Type? GetBaseModule()
+    {
+        return _baseType;
+    }
 }

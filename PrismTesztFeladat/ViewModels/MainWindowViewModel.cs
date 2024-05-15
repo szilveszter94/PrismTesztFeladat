@@ -2,26 +2,24 @@
 using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Regions;
-using PrismTesztFeladat.Views;
 
-namespace PrismTesztFeladat.ViewModels
+namespace PrismTesztFeladat.ViewModels;
+
+public class MainWindowViewModel : BindableBase
 {
-    public class MainWindowViewModel : BindableBase
+    private string _title = "Prism Application";
+
+    public string Title
     {
-        private string _title = "Prism Application";
-        private IRegionManager _regionManager;
+        get => _title;
+        set => SetProperty(ref _title, value);
+    }
 
-        public string Title
-        {
-            get => _title;
-            set => SetProperty(ref _title, value);
-        }
-
-        public MainWindowViewModel(IContainerExtension container, IRegionManager regionManager)
-        {
-            _regionManager = regionManager;
-            _regionManager.RegisterViewWithRegion(Regions.LEFT_REGION, typeof(HomeView));
-            _regionManager.RegisterViewWithRegion(Regions.RIGHT_REGION, typeof(HomeView));
-        }
+    public MainWindowViewModel(IContainerExtension container, IRegionManager regionManager, IModuleRegistry moduleRegistry)
+    {
+        var baseType = moduleRegistry.GetBaseModule();
+        regionManager.RegisterViewWithRegion(Regions.LeftRegion, baseType);
+        regionManager.RegisterViewWithRegion(Regions.RightRegion, baseType);
     }
 }
+

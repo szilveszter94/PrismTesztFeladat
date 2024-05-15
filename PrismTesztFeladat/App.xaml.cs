@@ -3,23 +3,29 @@ using Prism.Ioc;
 using Prism.Modularity;
 using PrismTesztFeladat.Views;
 using System.Windows;
+using Core;
 
-namespace PrismTesztFeladat
+namespace PrismTesztFeladat;
+
+public partial class App : PrismApplication
 {
-    public partial class App : PrismApplication
+    private IContainerRegistry _containerRegistry;
+    protected override Window CreateShell()
     {
-        protected override Window CreateShell()
-        {
-            return Container.Resolve<MainWindow>();
-        }
+        return Container.Resolve<MainWindow>();
+    }
 
-        protected override void RegisterTypes(IContainerRegistry containerRegistry)
-        {
-        }
+    protected override void RegisterTypes(IContainerRegistry containerRegistry)
+    {
+        _containerRegistry = containerRegistry;
+        _containerRegistry.RegisterSingleton<IModuleRegistry>(() => new ModuleRegistry(typeof(HomeView)));
+    }
 
-        protected override IModuleCatalog CreateModuleCatalog()
-        {
-            return new DirectoryModuleCatalog() { ModulePath = "./" };
-        }
+    protected override IModuleCatalog CreateModuleCatalog()
+    {
+        var catalog =  new DirectoryModuleCatalog() { ModulePath = "./" };
+        
+        return catalog;
     }
 }
+
