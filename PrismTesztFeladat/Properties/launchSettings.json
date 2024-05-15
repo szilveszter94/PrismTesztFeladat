@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "PrismTesztFeladat": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\szilveszter.sandor\\source\\repos\\PrismTesztFeladat\\build\\net6.0-windows"
+    },
+    "Profile 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\szilveszter.sandor\\source\\repos\\PrismTesztFeladat\\build\\net6.0-windows\\PrismTesztFeladat.exe"
+    }
+  }
+}

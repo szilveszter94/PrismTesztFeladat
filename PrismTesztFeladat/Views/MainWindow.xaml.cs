@@ -1,6 +1,4 @@
-﻿using Prism.Ioc;
-using Prism.Regions;
-using System.Windows;
+﻿using System.Windows;
 
 namespace PrismTesztFeladat.Views
 {

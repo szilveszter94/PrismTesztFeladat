@@ -5,9 +5,11 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrismTesztFeladat", "PrismTesztFeladat\PrismTesztFeladat.csproj", "{E42B7BA5-2EE1-4C7B-8390-E25DBEA2F0C3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleA", "ModuleA\ModuleA.csproj", "{616ED3EB-6814-4329-A57A-F09764AAD471}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleA", "Modules\ModuleA\ModuleA.csproj", "{616ED3EB-6814-4329-A57A-F09764AAD471}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleB", "ModuleB\ModuleB.csproj", "{5EDAA473-CDEB-4C2A-B8A1-2B959B9BCC46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleB", "Modules\ModuleB\ModuleB.csproj", "{5EDAA473-CDEB-4C2A-B8A1-2B959B9BCC46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{64DB1665-F0E1-4252-A8A0-7B53F40E38F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{5EDAA473-CDEB-4C2A-B8A1-2B959B9BCC46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EDAA473-CDEB-4C2A-B8A1-2B959B9BCC46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EDAA473-CDEB-4C2A-B8A1-2B959B9BCC46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64DB1665-F0E1-4252-A8A0-7B53F40E38F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64DB1665-F0E1-4252-A8A0-7B53F40E38F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64DB1665-F0E1-4252-A8A0-7B53F40E38F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64DB1665-F0E1-4252-A8A0-7B53F40E38F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

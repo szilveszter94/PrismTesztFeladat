@@ -1,47 +1,39 @@
-using System;
+using Core;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
+using System.Collections.ObjectModel;
 
 namespace ModuleB.ViewModels;
 
-public class ModuleBViewModel : BindableBase, INavigationAware
+public class ModuleBViewModel : BindableBase
 {
     public DelegateCommand ChangeViewsCommand { get; }
     private readonly IRegionManager _regionManager;
-    public string? Message
+    public ObservableCollection<string> Messages
     {
-        get => _message;
-        set => SetProperty(ref _message, value);
+        get { return _messages; }
     }
-    private string? _message;
+    private ObservableCollection<string> _messages = new ObservableCollection<string>();
 
-    public ModuleBViewModel(IRegionManager regionManager)
+    public ModuleBViewModel(IRegionManager regionManager, IEventAggregator eventAggregator)
     {
         _regionManager = regionManager;
         ChangeViewsCommand = new DelegateCommand(ChangeViews);
+        eventAggregator.GetEvent<MessageSentEvent>().Subscribe(HandleMessage);
+    }
+
+    private void HandleMessage(string message)
+    {
+        Messages.Add(message);
     }
 
     private void ChangeViews()
     {
-        _regionManager.RequestNavigate("LeftRegion", "HomeView");
-        _regionManager.RequestNavigate("RightRegion", "HomeView");
+        _regionManager.RequestNavigate(Core.Regions.LEFT_REGION, "HomeView");
+        _regionManager.RequestNavigate(Core.Regions.RIGHT_REGION, "HomeView");
     }
     
-    public void OnNavigatedTo(NavigationContext navigationContext)
-    {
-        if (navigationContext.Parameters.ContainsKey("message"))
-        {
-            Message = navigationContext.Parameters.GetValue<string>("message");
-        }
-    }
 
-    public bool IsNavigationTarget(NavigationContext navigationContext)
-    {
-        return true;
-    }
-
-    public void OnNavigatedFrom(NavigationContext navigationContext)
-    {
-    }
 }

@@ -19,7 +19,7 @@
             <Button Command="{Binding ChangeViewsCommand}" HorizontalAlignment="Center" Grid.Column="1" Content="Change views"/>
         </Grid>
         <Border BorderBrush="Gray" BorderThickness="0 1 1 1" Grid.Row="2">
-            <TextBlock Padding="5" FontSize="28" Text="{Binding Message}" />
+            <ListBox Padding="5" FontSize="28" ItemsSource="{Binding Messages}" />
         </Border>
     </Grid>
 </UserControl>

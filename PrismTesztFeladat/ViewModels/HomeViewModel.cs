@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Core;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -13,13 +13,13 @@ namespace PrismTesztFeladat.ViewModels
         public HomeViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
-            ShowModulesCommand = new DelegateCommand(ShowModules);
+            ShowModulesCommand = new DelegateCommand(ShowLeftAndRightRegion);
         }
         
-        private void ShowModules()
+        private void ShowLeftAndRightRegion()
         {
-            _regionManager.RequestNavigate("LeftRegion", "ModuleAView");
-            _regionManager.RequestNavigate("RightRegion", "ModuleBView");
+            _regionManager.RequestNavigate(Regions.LEFT_REGION, "ModuleAView");
+            _regionManager.RequestNavigate(Regions.RIGHT_REGION, "ModuleBView");
         }
     }
 }
