@@ -11,3 +11,12 @@ public static class Regions
 public class MessageSentEvent : PubSubEvent<string>
 {
 }
+
+public interface INavigationManager
+{
+
+}
+
+public class NavigationManager : INavigationManager
+{
+}
