@@ -16,6 +16,7 @@ namespace ModuleA
         
         public void OnInitialized(IContainerProvider containerProvider)
         {
+            _moduleRegistry.AddModule(Regions.LeftRegion, nameof(ModuleAView));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

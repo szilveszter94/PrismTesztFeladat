@@ -16,6 +16,7 @@ public interface IModuleRegistry
 {
     public Type? GetBaseModule();
     public string GetModuleTypeByRegion(string regionName);
+    public void AddModule(string regionName, string viewName);
 }
 
 public class ModuleRegistry : IModuleRegistry
@@ -28,6 +29,11 @@ public class ModuleRegistry : IModuleRegistry
     public ModuleRegistry(Type moduleType)
     {
         _baseType = moduleType;
+    }
+
+    public void AddModule(string regionName, string viewName)
+    {
+        _moduleTypes[regionName] = viewName;
     }
 
     public string GetModuleTypeByRegion(string regionName)

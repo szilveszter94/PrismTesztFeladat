@@ -15,6 +15,7 @@ public class ModuleBModule : IModule
     }
     public void OnInitialized(IContainerProvider containerProvider)
     {
+        _moduleRegistry.AddModule(Regions.RightRegion, nameof(ModuleBView));
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry)
