@@ -24,7 +24,7 @@ public partial class App : PrismApplication
     protected override IModuleCatalog CreateModuleCatalog()
     {
         var catalog =  new DirectoryModuleCatalog() { ModulePath = "./" };
-        
+        catalog.Initialize();
         return catalog;
     }
 }
