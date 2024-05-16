@@ -7,15 +7,15 @@ namespace ModuleB;
 
 public class ModuleBModule : IModule
 {
-    private readonly IModuleRegistry _moduleRegistry;
+    private readonly IViewRegistry _moduleRegistry;
 
-    public ModuleBModule(IModuleRegistry moduleRegistry)
+    public ModuleBModule(IViewRegistry moduleRegistry)
     {
         _moduleRegistry = moduleRegistry;
     }
     public void OnInitialized(IContainerProvider containerProvider)
     {
-        _moduleRegistry.AddModule(Regions.RightRegion, nameof(ModuleBView));
+        _moduleRegistry.AddView(Regions.RIGHT_REGION, nameof(ModuleBView));
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry)

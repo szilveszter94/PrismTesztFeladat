@@ -8,15 +8,15 @@ namespace ModuleA
 {
     public class ModuleAModule : IModule
     {
-        private readonly IModuleRegistry _moduleRegistry;
-        public ModuleAModule(IModuleRegistry moduleRegistry)
+        private readonly IViewRegistry _moduleRegistry;
+        public ModuleAModule(IViewRegistry moduleRegistry)
         {
             _moduleRegistry = moduleRegistry;
         }
         
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            _moduleRegistry.AddModule(Regions.LeftRegion, nameof(ModuleAView));
+            _moduleRegistry.AddView(Regions.LEFT_REGION, nameof(ModuleAView));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

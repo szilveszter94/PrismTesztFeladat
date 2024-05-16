@@ -9,10 +9,10 @@ namespace PrismTesztFeladat.ViewModels;
 public class HomeViewModel : BindableBase
 {
     private readonly IRegionManager _regionManager;
-    private readonly IModuleRegistry _moduleRegistry;
+    private readonly IViewRegistry _moduleRegistry;
     public DelegateCommand ShowLeftAndRightRegionCommand { get; }
 
-    public HomeViewModel(IRegionManager regionManager, IModuleRegistry moduleRegistry)
+    public HomeViewModel(IRegionManager regionManager, IViewRegistry moduleRegistry)
     {
         _moduleRegistry = moduleRegistry;
         _regionManager = regionManager;
@@ -21,10 +21,10 @@ public class HomeViewModel : BindableBase
     
     private void ShowLeftAndRightRegion()
     {
-        var leftModule = _moduleRegistry.GetModuleTypeByRegion(Regions.LeftRegion);
-        var rightModule = _moduleRegistry.GetModuleTypeByRegion(Regions.RightRegion);
-        _regionManager.RequestNavigate(Regions.LeftRegion, leftModule);
-        _regionManager.RequestNavigate(Regions.RightRegion, rightModule);
+        var leftModule = _moduleRegistry.GetViewNameByRegionName(Regions.LEFT_REGION);
+        var rightModule = _moduleRegistry.GetViewNameByRegionName(Regions.RIGHT_REGION);
+        _regionManager.RequestNavigate(Regions.LEFT_REGION, leftModule);
+        _regionManager.RequestNavigate(Regions.RIGHT_REGION, rightModule);
     }
 }
 

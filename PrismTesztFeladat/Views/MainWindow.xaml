@@ -10,14 +10,14 @@
         mc:Ignorable="d"
 
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="350" Width="525" >
+        Title="Prism Application" Height="350" Width="525" >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*" />
             <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
 
-        <ContentControl Grid.Column="0" prism:RegionManager.RegionName="{x:Static core:Regions.LeftRegion}" />
-        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static core:Regions.RightRegion}"/>
+        <ContentControl Grid.Column="0" prism:RegionManager.RegionName="{x:Static core:Regions.LEFT_REGION}" />
+        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static core:Regions.RIGHT_REGION}"/>
     </Grid>
 </Window>

@@ -18,14 +18,11 @@ public partial class App : PrismApplication
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
         _containerRegistry = containerRegistry;
-        _containerRegistry.RegisterSingleton<IModuleRegistry>(() => new ModuleRegistry(typeof(HomeView)));
+        _containerRegistry.RegisterSingleton<IViewRegistry, ViewRegisrty>();
+        var registry = Container.Resolve<IViewRegistry>();
+        registry.SetBaseView(typeof(HomeView));
     }
 
-    protected override IModuleCatalog CreateModuleCatalog()
-    {
-        var catalog =  new DirectoryModuleCatalog() { ModulePath = "./" };
-        catalog.Initialize();
-        return catalog;
-    }
+    protected override IModuleCatalog CreateModuleCatalog() => new DirectoryModuleCatalog() { ModulePath = "./" };
 }
 

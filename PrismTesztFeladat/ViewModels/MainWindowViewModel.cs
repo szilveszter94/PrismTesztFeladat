@@ -7,19 +7,11 @@ namespace PrismTesztFeladat.ViewModels;
 
 public class MainWindowViewModel : BindableBase
 {
-    private string _title = "Prism Application";
-
-    public string Title
+    public MainWindowViewModel(IContainerExtension container, IRegionManager regionManager, IViewRegistry moduleRegistry)
     {
-        get => _title;
-        set => SetProperty(ref _title, value);
-    }
-
-    public MainWindowViewModel(IContainerExtension container, IRegionManager regionManager, IModuleRegistry moduleRegistry)
-    {
-        var baseType = moduleRegistry.GetBaseModule();
-        regionManager.RegisterViewWithRegion(Regions.LeftRegion, baseType);
-        regionManager.RegisterViewWithRegion(Regions.RightRegion, baseType);
+        var baseType = moduleRegistry.GetBaseView();
+        regionManager.RegisterViewWithRegion(Regions.LEFT_REGION, baseType);
+        regionManager.RegisterViewWithRegion(Regions.RIGHT_REGION, baseType);
     }
 }
 

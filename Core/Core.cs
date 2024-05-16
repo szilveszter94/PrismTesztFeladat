@@ -4,45 +4,35 @@ namespace Core;
 
 public static class Regions
 {
-    public const string LeftRegion = "LeftRegion";
-    public const string RightRegion = "RightRegion";
+    public const string LEFT_REGION = "LeftRegion";
+    public const string RIGHT_REGION = "RightRegion";
 }
 
 public class MessageSentEvent : PubSubEvent<string>
 {
 }
 
-public interface IModuleRegistry
+public interface IViewRegistry
 {
-    public Type? GetBaseModule();
-    public string GetModuleTypeByRegion(string regionName);
-    public void AddModule(string regionName, string viewName);
+    Type? GetBaseView();
+    string GetViewNameByRegionName(string regionName);
+    void AddView(string regionName, string viewName);
+    void SetBaseView(Type? baseType);
 }
 
-public class ModuleRegistry : IModuleRegistry
+public class ViewRegisrty : IViewRegistry
 {
-    private readonly Dictionary<string, string> _moduleTypes =
-        new() { { Regions.LeftRegion, "ModuleAView" }, { Regions.RightRegion, "ModuleBView" } };
+    private readonly Dictionary<string, string> _viewTypes = new() {};
+    private Type? _baseView;
 
-    private Type? _baseType;
-
-    public ModuleRegistry(Type moduleType)
+    public void AddView(string regionName, string viewName)
     {
-        _baseType = moduleType;
+        _viewTypes[regionName] = viewName;
     }
 
-    public void AddModule(string regionName, string viewName)
-    {
-        _moduleTypes[regionName] = viewName;
-    }
+    public void SetBaseView(Type? baseType) => _baseView = baseType;
 
-    public string GetModuleTypeByRegion(string regionName)
-    {
-        return _moduleTypes[regionName];
-    }
+    public string GetViewNameByRegionName(string regionName) => _viewTypes[regionName];
 
-    public Type? GetBaseModule()
-    {
-        return _baseType;
-    }
+    public Type? GetBaseView() => _baseView;
 }
