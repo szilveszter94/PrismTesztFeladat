@@ -1,5 +1,4 @@
-﻿using System;
-using Core;
+﻿using Core;
 using ModuleA.Views;
 using Prism.Ioc;
 using Prism.Modularity;
