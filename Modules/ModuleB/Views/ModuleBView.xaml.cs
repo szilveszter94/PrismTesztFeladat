@@ -1,5 +1,4 @@
 using System.Windows.Controls;
-using Core;
 
 namespace ModuleB.Views;
 

@@ -1,17 +1,14 @@
 ﻿using System.Windows;
 
-namespace PrismTesztFeladat.Views
+namespace PrismTesztFeladat.Views;
+
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+
+
+    public MainWindow()
     {
-
-
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
+

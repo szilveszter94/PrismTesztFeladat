@@ -2,7 +2,7 @@
   "profiles": {
     "PrismTesztFeladat": {
       "commandName": "Project",
-      "workingDirectory": "C:\\Users\\szilveszter.sandor\\source\\repos\\PrismTesztFeladat\\build\\net6.0-windows"
+      "workingDirectory": "$(SolutionDir)\\build"
     },
     "Profile 1": {
       "commandName": "Executable",

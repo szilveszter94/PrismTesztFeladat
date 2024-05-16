@@ -1,14 +1,13 @@
 ﻿using System.Windows.Controls;
 
 
-namespace PrismTesztFeladat.Views
-{
+namespace PrismTesztFeladat.Views;
 
-    public partial class HomeView : UserControl
+public partial class HomeView : UserControl
+{
+    public HomeView()
     {
-        public HomeView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
+

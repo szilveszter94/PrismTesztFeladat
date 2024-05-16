@@ -3,45 +3,41 @@ using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 
-namespace ModuleA.ViewModels
+namespace ModuleA.ViewModels;
+
+public class ModuleAViewModel : BindableBase
 {
-    public class ModuleAViewModel : BindableBase
+    private readonly IEventAggregator _eventAggregator;
+    public DelegateCommand SendMessageCommand { get; }
+
+    public bool CanSendMessage
     {
-        private readonly IEventAggregator _eventAggregator;
-        public DelegateCommand SendMessageCommand { get; }
+        get => _canSendMessage;
+        set => SetProperty(ref _canSendMessage, value);
+    }
+    private bool _canSendMessage;
 
-        public bool CanSendMessage
-        {
-            get => _canSendMessage;
-            set => SetProperty(ref _canSendMessage, value);
-        }
-        private bool _canSendMessage;
+    public string Message
+    {
+        get => _message;
+        set => SetProperty(ref _message, value);
+    }
+    private string _message;
 
-        public string Message
-        {
-            get => _message;
-            set
-            {
-                SetProperty(ref _message, value);
-            }
-        }
+    public ModuleAViewModel(IEventAggregator eventAggregator)
+    {
+        SendMessageCommand = new DelegateCommand(SendMessage, () => CanSendMessage && !string.IsNullOrEmpty(Message))
+                            .ObservesProperty(() => Message)
+                            .ObservesProperty(() => CanSendMessage);
+        _eventAggregator = eventAggregator;
+    }
 
-        private string _message;
+    private void SendMessage()
+    {
+        if (string.IsNullOrEmpty(Message)) return;
         
-        public ModuleAViewModel(IEventAggregator eventAggregator)
-        {
-            SendMessageCommand = new DelegateCommand(SendMessage, () => CanSendMessage && !string.IsNullOrEmpty(Message))
-        .ObservesProperty(() => Message).ObservesProperty(() => CanSendMessage);
-            _eventAggregator = eventAggregator;
-        }
-
-        private void SendMessage()
-        {
-            if (!string.IsNullOrEmpty(Message))
-            {
-                _eventAggregator.GetEvent<MessageSentEvent>().Publish(Message);
-                Message = string.Empty;
-            }
-        }
+        _eventAggregator.GetEvent<MessageSentEvent>().Publish(Message);
+        Message = string.Empty;
+        
     }
 }

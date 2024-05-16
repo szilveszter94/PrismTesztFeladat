@@ -1,16 +1,12 @@
 ﻿using System.Windows.Controls;
-using Core;
 
-namespace ModuleA.Views
+namespace ModuleA.Views;
+
+public partial class ModuleAView : UserControl
 {
-    /// <summary>
-    /// Interaction logic for ModuleAView.xaml
-    /// </summary>
-    public partial class ModuleAView : UserControl
+    public ModuleAView()
     {
-        public ModuleAView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
+

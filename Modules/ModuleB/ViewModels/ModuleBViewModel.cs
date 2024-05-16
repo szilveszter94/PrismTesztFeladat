@@ -9,12 +9,13 @@ namespace ModuleB.ViewModels;
 
 public class ModuleBViewModel : BindableBase
 {
-    public DelegateCommand ChangeViewsCommand { get; }
     private readonly IViewRegistry _moduleRegistry;
     private readonly IRegionManager _regionManager;
-    private readonly ObservableCollection<string> _messages = new ();
-
+    
     public ObservableCollection<string> Messages => _messages;
+    private readonly ObservableCollection<string> _messages = new();
+
+    public DelegateCommand ChangeViewsCommand { get; }
 
     public ModuleBViewModel(IRegionManager regionManager, IEventAggregator eventAggregator, IViewRegistry moduleRegistry)
     {
@@ -24,10 +25,7 @@ public class ModuleBViewModel : BindableBase
         eventAggregator.GetEvent<MessageSentEvent>().Subscribe(HandleMessage);
     }
 
-    private void HandleMessage(string message)
-    {
-        Messages.Add(message);
-    }
+    private void HandleMessage(string message) => Messages.Add(message);
 
     private void ChangeViews()
     {
@@ -35,6 +33,4 @@ public class ModuleBViewModel : BindableBase
         _regionManager.RequestNavigate(Regions.LEFT_REGION, baseType);
         _regionManager.RequestNavigate(Regions.RIGHT_REGION, baseType);
     }
-    
-
 }
